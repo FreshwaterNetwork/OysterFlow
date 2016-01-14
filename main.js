@@ -23,12 +23,11 @@ define([
      "esri/layers/FeatureLayer",
      "esri/layers/GraphicsLayer",
      "esri/symbols/PictureMarkerSymbol",
-     "esri/tasks/Geometry",
      "esri/geometry/Point",
       "esri/dijit/Legend"
 ],
     function (declare, PluginBase, $, ui, templates, config,SabineMap,SabineDialog,Salinity,Extent, SpatialReference, FeatureLayer, GraphicsLayer, PictureMarkerSymbol,
-        Geometry,Point,Legend) {
+        Point,Legend) {
 
         var configVals = dojo.eval(config)[0];        
         
