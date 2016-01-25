@@ -8,7 +8,6 @@
      "esri/symbols/PictureMarkerSymbol",
      "esri/symbols/SimpleMarkerSymbol",
      "esri/symbols/SimpleLineSymbol",
-     "esri/tasks/Geometry",
      "esri/geometry/Point",
      "esri/tasks/FeatureSet",
      "esri/layers/FeatureLayer",
@@ -19,7 +18,7 @@
        "dojo/_base/Color"
      
 
-], function ($, config,validators,SabineSelect,SpatialReference, GraphicsLayer, PictureMarkerSymbol,SimpleMarkerSymbol,SimpleLineSymbol, Geometry, Point, FeatureSet,
+], function ($, config,validators,SabineSelect,SpatialReference, GraphicsLayer, PictureMarkerSymbol,SimpleMarkerSymbol,SimpleLineSymbol, Point, FeatureSet,
     FeatureLayer, UniqueValueRenderer, Legend,Extent,TooltipDialog,Color) {
 
     var configVals = dojo.eval(config)[0];
