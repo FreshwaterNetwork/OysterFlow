@@ -1,28 +1,22 @@
-﻿require({
-    packages: [
-	{
-	    name: "jquery",
-	    location: "//ajax.googleapis.com/ajax/libs/jquery/1.9.0",
-	    main: "jquery.min"
-	}
-    ]
-});
-
+﻿
 define([
     "jquery",
     "dojo/text!./config.json",
     "dojo/text!./validators.json",
     "dojo/text!./Templates.html",
      "./SabineMap",
+     "./CalcasieuMap",
       "./CalculateSalinity",
-       "esri/geometry/Extent"
-
-], function ($, config,validators,templates,SabineMap,Salinity,Extent) {
+      "./IntroDialog",
+       "esri/geometry/Extent",
+       "exports"
+       
+], function ($, config,validators,templates,SabineMap,CalcasieuMap,Salinity,IntroDialog,Extent,exports) {
     var configVals = dojo.eval(config)[0];
 
-    return {
-
-        setDialog: function (container,map,app) {
+   
+       
+        exports.setSabineDialog = function (container, map, app,state) {
             //loads the content and wires up the events
 
             $(container).html($.trim($(templates).find("#template-SabineApp").html()));
@@ -41,14 +35,20 @@ define([
             $("#imgDamFlow","#imgRiverFlow","#imgWaterFlow").tooltip();
 
             $("#aThresholds").attr("onclick", "$('#dialog-message').dialog('open');");
+
+            $("#aSabineBack").click(function (e) {
+                e.preventDefault();
+                CalcasieuMap.clearMap();
+                IntroDialog.setIntroDialog(container, map, app);
+            });
            
             $("#radFull").change(function () { map.centerAndZoom([configVals.mapCenter.x, configVals.mapCenter.y], configVals.mapCenter.zoom); });
             $("#radLake").change(function () { map.setExtent(new Extent(configVals.sabineExtent)) });
-            $("#selMonth").change(SabineMap.setValidators)
+            $("#selMonth").change(function(){SabineMap.setValidators(map)});
             $("#btnCalculate").click(function () {
                 Salinity.calculateSalinity(map,app);
             });
-            SabineMap.setValidators();
+            SabineMap.setValidators(map);
 
             $("#btnStartOver").click(function () {
                 $("#divLanding").css("display", "");
@@ -57,40 +57,7 @@ define([
                 SabineMap.loadDefaultLegend(map);
             });
 
-        },
-
-        setValuesFromState: function (sabineState) {
-
-            $("#selMonth option[value='" + sabineState.month + "']").prop('selected', true);
-            SabineMap.setValidators();
-            $("#spanDamFlow").text(sabineState.damFlow);
-            $("#damFlow").slider({ value: sabineState.damFlow });
-            $("#spanWaterLevel").text(sabineState.waterLevel);
-            $("#waterLevel").slider({ value: sabineState.waterLevel });
-            $("#spanRiverFlow").text(sabineState.riverFlow);
-            $("#riverFlow").slider({ value: sabineState.riverFlow });
-
-          
-        },
-
-        getState: function (map) {
-            var sabineState = new Object;
-            //get the input values
-            sabineState.month = $("#selMonth").val();
-            sabineState.damFlow = $("#spanDamFlow").text();
-            sabineState.waterLevel = $("#spanWaterLevel").text();
-            sabineState.riverFlow = $("#spanRiverFlow").text();
-
-            //see if we are looking at results
-            if ($("#divResults").css("display") == "none")
-                sabineState.results = false;
-            else
-                sabineState.results = true;
-
-            sabineState.mapExtent = map.extent;
-            return sabineState;
         }
-    }
 
 
 

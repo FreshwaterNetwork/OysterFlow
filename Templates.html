@@ -1,23 +1,40 @@
 ﻿<div>
+    <div id="template-OysterIntro">
+        <div style="padding:10px 10px 10px 10px;font-weight:bold;font-size:16px;">
+            This application investigates the impact of upstream changes in river flow on downstream salinity levels in oyster habitat. This service is currently available for the Sabine River and Sabine Lake as well as Calcasieu River and Calcasieu Lake.  Please select from one of the two links below to enter the application.
+            <div align ="center" style="padding-top:20px">
+                <a id="aSabine" href="javascript:void(0)">Sabine Lake Impacted by Dam Releases</a>
+            </div>
+            <div align ="center" style="padding-top:20px">
+               <a id="aCalcasieu" href="javascript:void(0)">Calcasieu Lake Impacted by River Withdrawals</a>
+            </div>
+        
+        </div>
+    </div>
     <div id="template-SabineApp">
         <div style="padding:10px 10px 10px 10px">
-            <div align="right"><a id="aThresholds" href="javascript:void(0)">View Monthly Salinity Thresholds</a></div>
-            <div>
-                <input type="radio" id="radFull" name="extent" checked />&nbsp;Full Extent&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="radLake" name="extent" />&nbsp;Lake Extent
+            <!--the div id for the app title is used when determining state - so this should be updated if it is changed.-->
+            <div style="font-weight:bold;font-size:16px;text-align:center" id="divSabineLabel">Explore the Relationship Between Freshwater Inflows and Oyster Sustainability</div>
+
+            <div style="padding-top:10px;text-align:center">
+                Map View: &nbsp;<input type="radio" id="radFull" name="extent" checked />&nbsp;Full Extent&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="radLake" name="extent" />&nbsp;Zoom to Sabine Lake
             </div>
             <div id="divLanding">
                 <div align="center" style="padding-top:15px">
                     <table style="text-align:left">
                         <thead>
                             <tr>
-                                <th style="font-weight:bold;text-align:center" colspan= "2">Test Data</th>
+                                <th style="font-weight:bold;text-align:center">
+                                Optimum Salinity ranges change throughout the year.
+                                    <div><a id="aThresholds" href="javascript:void(0)">View Optimum Salinity Ranges for Oysters</a></div>
+                                </th>
                             </tr>
                         </thead>
                         <tbody id="tbodyInputs">
                             <tr>
-                                <td colspan= "2">
-                                    <span style="font-weight:bold">Sample Month:</span>&nbsp;
+                                <td>
+                                    <span style="font-weight:bold">Select month to begin scenario:</span>&nbsp;
                                     <select id="selMonth" style="width:175px">
                                         <option value="January">January</option>
                                         <option value="February">February</option>
@@ -35,58 +52,59 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td width="275">                                  
-                                    <span style="font-weight:bold">Modeled Outflow at Dam (cfs):</span>&nbsp;<span id="spanDamFlow"></span>
-                                </td>
-                                <td width= "50" align="right"><img src="plugins/sabine_app/images/system_help.png" title="Outflow (modeled) from Toledo Bend Reservoir" id="imgDamFlow" /></td>
+                                <td width="425">                                  
+                                    <span>Salinity decreases with higher flows from Toledo Bend Reservoir.</span><br />
+                                    <span style="font-weight:bold">Adjust Flow Rate Out of Toledo Bend Reservoir (cfs):</span>&nbsp;<span id="spanDamFlow"></span>
+                                </td>                                
 
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td >
                                     <div id="damFlow"></div>
-                                    <label for="damFlow"><span id="spanDamFlowMin"></span><span id="spanDamFlowMax" style="position:relative;left:235px"></span></label>
+                                    <label for="damFlow"><span id="spanDamFlowMin"></span><span id="spanDamFlowMax" style="position:relative;left:345px"></span></label>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="vertical-align:middle;"><span style="font-weight:bold">Sabine Pass Water Level (ft):</span>&nbsp;<span id="spanWaterLevel"></span></td>
-                                <td align="right">
-                                    <img src="plugins/sabine_app/images/system_help.png" id="imgWaterLevel" title="Water level at NOAA buoy at Sabine Pass" /></td>
+                                <td style="vertical-align:middle;"><span>Salinity increases with water level at Sabine Pass.</span><br />
+                                    <span style="font-weight:bold"> Adjust Sabine Pass Water Level (ft):</span>&nbsp;<span id="spanWaterLevel"></span></td>                               
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>
                                     <div id="waterLevel"></div>
-                                    <label for="waterLevel"><span id="spanWaterLevelMin"></span><span id="spanWaterLevelMax" style="position:relative;left:245px"></span></label>
+                                    <label for="waterLevel"><span id="spanWaterLevelMin"></span><span id="spanWaterLevelMax" style="position:relative;left:345px"></span></label>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td><span style="font-weight:bold">Neches River Flow (cfs):</span>&nbsp;<span id="spanRiverFlow"></span>
-                                </td><td>
-                                    <div style="display:inline;text-align:right"><img src="plugins/sabine_app/images/system_help.png" id="imgRiverFlow" title="Daily mean recorded flow at USGS Station 08041780 Neches River" /></div>
+                                <td><span>High flows from the Neches River decrease salinity in Sabine Lake.</span><br />
+                                    <span style="font-weight:bold">Adjust Neches River Flow Rate (cfs):</span>&nbsp;<span id="spanRiverFlow"></span>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>
                                     <div id="riverFlow"></div>
-                                    <label for="riverFlow"><span id="spanRiverFlowMin"></span><span id="spanRiverFlowMax" style="position:relative;left:250px"></span></label>
+                                    <label for="riverFlow"><span id="spanRiverFlowMin"></span><span id="spanRiverFlowMax" style="position:relative;left:350px"></span></label>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: center" colspan="2">
-                                    <button id="btnCalculate" style="font-weight:bold">Calculate Results</button>
+                                <td style="text-align: center">
+                                    <button id="btnCalculate" style="font-weight:bold">Run Scenario</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                     <div style="vertical-align:bottom">
+                        <a href="#" id="aSabineBack"><< Choose a different watershed</a>
+                    </div>
                 </div>
             </div><!--padding div-->
         </div>
         <div id="divResults" style="display:none">
             <div>
-                <div style="padding:25px 0px 5px 10px"><span style="font-weight:bold">Sample Month:</span>&nbsp;<span id="spanSampleMonthDisplay"></span></div>
-                <div style="padding:5px 0px 5px 10px"><span style="font-weight:bold">Modeled Outflow at Dam (cfs):</span>&nbsp;<span id="spanDamFlowDisplay"></span></div>
+                <div style="padding:25px 0px 5px 10px"><span style="font-weight:bold">Scenario Month:</span>&nbsp;<span id="spanSampleMonthDisplay"></span></div>
+                <div style="padding:5px 0px 5px 10px"><span style="font-weight:bold">Flow Rate Out of Toledo Bend Reservoir (cfs):</span>&nbsp;<span id="spanDamFlowDisplay"></span></div>
                 <div style="padding:5px 0px 5px 10px"><span style="font-weight:bold">Sabine Pass Water Level (ft):</span>&nbsp;<span id="spanWaterLevelDisplay"></span></div>
-                <div style="padding:5px 0px 5px 10px"><span style="font-weight:bold">Neches River Flow (cfs):</span>&nbsp;<span id="spanRiverFlowDisplay"></span></div>
+                <div style="padding:5px 0px 5px 10px"><span style="font-weight:bold">Neches River Flow Rate (cfs):</span>&nbsp;<span id="spanRiverFlowDisplay"></span></div>
             </div>
             <div align="center" id="divResults" style="padding-top:15px">
                 <div style="font-weight:bold">Results</div>
@@ -104,8 +122,142 @@
                 <button id="btnStartOver" style="font-weight:bold">Start Over</button>
             </div>
         </div>
-        <div id="dialog-message" title="Salinity Thresholds">
-            <img src="plugins/sabine_app/images/SalinityRange.png" />
+        <div id="dialog-message" title="Optimum Salinity Range for Oysters">
+            <img src="plugins/sabine_app/images/SalinityRange.png" /><br />
+            <b>Reference:</b><br />
+            Chatry, M., R. J. Dugas & K. A. Easley. 1983. Optimum salinity regime for oyster production on Louisiana’s state seed grounds. <i>Contrib. Mar. Sci.</i> 26:81-94.
+
         </div>
     </div>
+    <div id="template-CalcasieuApp">
+         <style>
+            span.esriLegendServiceLabel {
+                display: block;
+                padding: 5px 0px 5px 0px;
+                margin: 10px 0px 0px 0px;
+                font-size: 14px;
+            }
+
+            .esriLegendLayerLabel {
+                display: none;
+            }
+        </style>
+        <div style="padding:10px 10px 10px 10px">
+
+            <div style="font-weight:bold;font-size:16px;text-align:center" id="divCalcasieuLabel">Explore the Relationship Between Freshwater Inflows and Oyster Sustainability</div>
+
+            <div style="padding-top:10px;text-align:center">
+                Map View: &nbsp;<input type="radio" id="radFull" name="extent" checked />&nbsp;Full Extent&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="radLake" name="extent" />&nbsp;Zoom to Calcasieu Lake
+            </div>
+            <div id="divCalcasieuLanding">
+                <div align="center" style="padding-top:15px">
+                    <table style="text-align:left">
+                        <thead>
+                            <tr>
+                                <th style="font-weight:bold;text-align:center">
+                                Optimum Salinity ranges change throughout the year.
+                                    <div><a id="aThresholds" href="javascript:void(0)">View Optimum Salinity Ranges for Oysters</a></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:center;font-size:16px;font-weight:bold">Test Increased River Withdrawals</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:16px">
+                                    Salinity increases with reduced flows in the Calcasieu River.  Adjust the streamflow in the river by entering the amount of water to withdraw from the river.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table style="border:none;margin-bottom:0px">
+                                        <tr>
+                                            <td width="225" style="font-size:14px;font-weight:bold">
+                                                 Amount of flow in cubic feet per second (cfs) to withdraw from the river near the city of Lake Charles:
+                                            </td>
+                                            <td>
+                                                <input type="text" style="width:100px;display:inline" id="txtInput"/>&nbsp;<i>cfs</i>
+                                                <div align ="right" style="font-style:italic;text-align:right;margin-top:0px;padding-top:0px" id="divWarning">Enter a value between 0 and 5000 cfs.</div>
+                                            </td>
+                                        </tr>           
+                                                  
+                                    </table>
+                                    
+                                </td>
+                            </tr>                            
+                             <tr>
+                                <td style="text-align: center">
+                                    <button id="btnCalculate" style="font-weight:bold">Run Scenario</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                <div style="vertical-align:bottom">
+                    <a href="#" id="aCalcasieuBack"><< Choose a different watershed</a>
+                </div>
+                </div>
+            <div id="divCalcasieuResults" style="display:none">
+                <div style="text-align:center">
+                <div style="font-weight:bold;padding-top:10px;padding-bottom:10px">Probability Outside Optimum Salinity Range (<a id="aCalcThresholds" href="javascript:void(0)">view optimum ranges</a>)</div>
+                    <div id="divChartLegend" align = "center" style="border:none;margin:0px 0px 0px 0px"></div>
+                    <div id="divChart" style="margin:0px 0px 0px 0px"></div>                   
+                    <div style="padding-top:10px;padding-bottom:10px"><span style="font-weight:bold">Amount of flow withdrawn:</span>&nbsp;<span id="spanWithdrawal"></span>&nbsp;cfs</div>
+                    <table id="legendTable" align="center" border = "1">
+                            <tr style="font-weight:bold;">
+                                <td style="padding:5px 5px 0px 5px">&nbsp;</td>
+                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Station #</td>
+                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Probability</td>
+                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Salinity</td>
+                                <td style="padding:5px 5px 0px 5px">&nbsp;</td>
+                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center" >Station #</td>
+                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center" >Probability</td>
+                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Salinity</td>
+                            </tr>
+                            <tr style="font-weight:bold;">
+                                <td style="padding:0px 5px 5px 5px">&nbsp;</td>
+                                <td style="font-size:12px;padding:0px 5px 5px 5px">&nbsp;</td>
+                                <td  id="tdMonth1" style="font-size:14px;padding:0px 5px 5px 5px;text-align:center;font-weight:bold"></td>
+                                <td style="font-size:12px;padding:0px 5px 5px 5px;text-align:center">Mean/StDev</td>
+                                <td style="padding:0px 5px 5px 5px">&nbsp;</td>
+                                <td style="font-size:12px;padding:0px 5px 5px 5px">&nbsp;</td>
+                                <td  id="tdMonth2" style="font-size:14px;padding:0px 5px 5px 5px;text-align:center;font-weight:bold"></td>
+                                <td style="font-size:12px;padding:0px 5px 5px 5px;text-align:center">Mean/StDev</td>
+                            </tr>
+                            <tr>
+                                <td id="td1743Image"></td>
+                                <td id="td1743Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
+                                <td id="td1743Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                                <td id="td1743Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center" ></td>
+                                <td id="td0644Image"></td>
+                                <td id="td0644Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
+                                <td id="td0644Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                                <td id="td0644Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                            </tr>
+                             <tr>
+                                <td id="td0685Image"></td>
+                                <td id="td0685Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
+                                <td id="td0685Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                                <td id="td0685Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                                <td id="td0687Image"></td>
+                                <td id="td0687Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
+                                <td id="td0687Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                                <td id="td0687Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                            </tr>
+                        </table>
+
+                      <button id="btnStartOver" style="font-weight:bold">Start Over</button>
+                </div>
+
+            </div>
+            </div>
+         <div id="dialog-message" title="Optimum Salinity Range for Oysters">
+            <img src="plugins/sabine_app/images/SalinityRange.png" /><br />
+            <b>Reference:</b><br />
+            Chatry, M., R. J. Dugas & K. A. Easley. 1983. Optimum salinity regime for oyster production on Louisiana’s state seed grounds. <i>Contrib. Mar. Sci.</i> 26:81-94.
+
+        </div>
+        </div>
 </div>

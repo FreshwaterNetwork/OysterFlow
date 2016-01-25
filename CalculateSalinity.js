@@ -1,13 +1,4 @@
-﻿require({
-    packages: [
-	{
-	    name: "jquery",
-	    location: "//ajax.googleapis.com/ajax/libs/jquery/1.9.0",
-	    main: "jquery.min"
-	}
-    ]
-});
-
+﻿
 define([
     "jquery",
     "dojo/text!./config.json",

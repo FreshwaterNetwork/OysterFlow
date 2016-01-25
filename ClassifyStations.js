@@ -1,14 +1,4 @@
-﻿require({
-    packages: [
-	{
-	    name: "jquery",
-	    location: "//ajax.googleapis.com/ajax/libs/jquery/1.9.0",
-	    main: "jquery.min"
-	}
-    ]
-});
-
-define([
+﻿define([
     "jquery",
     "dojo/text!./config.json",
     "dojo/text!./validators.json",
@@ -49,9 +39,9 @@ define([
             var table = $("#tbodyResults");
             $(table).html(null); //remove existing rows
 
-            var greenIcon = "plugins/sabine_app/images/GreenFlag.png";
-            var redIcon = "plugins/sabine_app/images/RedFlag.png";
-            var yellowIcon = "plugins/sabine_app/images/YellowFlag.png"
+            var greenIcon = "plugins/sabine_app/images/GreenSphere.png";
+            var redIcon = "plugins/sabine_app/images/RedSphere.png";
+            var yellowIcon = "plugins/sabine_app/images/YellowSphere.png"
 
             //remove the existing stations layer
             var stationsLayer = map.getLayer("SabineApp_Stations");
@@ -64,23 +54,25 @@ define([
             //make the results table
             $.each(response, function () {
                 var key = this.station
-                var value = this.upper_exceedance;
+                var valAbove = this.upper_exceedance;
                 var valBelow = this.lower_exceedance;
+                var valDisplay = valAbove;
+                if (valAbove < valBelow)
+                    valDisplay = valBelow;
 
                 //update the station list with the value for the map
                 $.each(lstStations, function (k, station) {
                     if (station.attributes.Station == key) {
-                        station.attributes["Upper"] = value;
-                        return false
+                      station.attributes["Percentage"] = valDisplay;
+                      return false
                     }
                 })
 
-
                 var icon = greenIcon;
-                if (value >= 0.50 && value <= 0.75) {
+                if (valDisplay >= 0.50 && valDisplay <= 0.75) {
                     icon = yellowIcon;
                 }
-                else if (value > 0.75) {
+                else if (valDisplay > 0.75) {
                     icon = redIcon;
                 }
 
@@ -88,12 +80,12 @@ define([
                 var row = $("<tr>");
                 row.append($("<td>").text(key));
                 row.append($("<td>").text((Math.round((parseFloat(valBelow)*100) *100)/100).toString() + "%").css("text-align","center"));
-                row.append($("<td>").text((Math.round((parseFloat(value) * 100) * 100) / 100).toString() + "%").css("text-align", "center"));
+                row.append($("<td>").text((Math.round((parseFloat(valAbove) * 100) * 100) / 100).toString() + "%").css("text-align", "center"));
                 var imageCell = $("<td>");
                 var iconImage = $("<img>");
                 iconImage.attr("src", icon);
-                iconImage.attr("height", "16");
-                iconImage.attr("width", "16");
+                iconImage.attr("height", "32");
+                iconImage.attr("width", "32");
                 imageCell.append(iconImage);
                 row.append(imageCell);
 
@@ -108,7 +100,7 @@ define([
                 "fieldAliases": {
                     "Station": "Station",
                     "Name": "Name",
-                    "Upper": "Upper"
+                    "Percentage": "Percentage"
                 },
                 "geometryType": "esriGeometryPoint",
                 "spatialReference": {
@@ -133,9 +125,9 @@ define([
                          "length": 255
                      },
                       {
-                          "name": "Upper",
+                          "name": "Percentage",
                           "type": "esriFieldTypeDouble",
-                          "alias": "Upper"
+                          "alias": "Percentage"
 
                       }
                 ],
@@ -171,10 +163,10 @@ define([
 
             var featureLayer = new FeatureLayer(featureCollection, { mode: FeatureLayer.MODE_SNAPSHOT, id: "SabineApp_Stations",outfields:["Station"] });
             var renderer = new UniqueValueRenderer(null, function (graphic) {
-                if (graphic.attributes['Upper'] > 0.75)
+                if (graphic.attributes['Percentage'] > 0.75)
                     return "> 75%"
-                else if (graphic.attributes['Upper'] >= 0.50 && graphic.attributes['Upper'] <= 0.75)
-                    return "50% - 70%"
+                else if (graphic.attributes['Percentage'] >= 0.50 && graphic.attributes['Percentage'] <= 0.75)
+                    return "50% - 75%"
                 else
                     return "< 50%"
             });
@@ -183,9 +175,9 @@ define([
             var yellowSymbol = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": yellowIcon, "contentType": "image/png", "width": 32, "height": 32 });
             var redSymbol = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": redIcon, "contentType": "image/png", "width": 32, "height": 32 });
 
-            renderer.addValue({ value: "< 50%", label: "< 50% above threshold", symbol: greenSymbol });
-            renderer.addValue({ value: "50% - 70%", label: "50% - 70% above threshold", symbol: yellowSymbol });
-            renderer.addValue({ value: "> 75%", label: "> 75% above threshold", symbol: redSymbol });
+            renderer.addValue({ value: "< 50%", label: "< 50% outside range", symbol: greenSymbol });
+            renderer.addValue({ value: "50% - 75%", label: "50% - 75% outside range", symbol: yellowSymbol });
+            renderer.addValue({ value: "> 75%", label: "> 75% outside range", symbol: redSymbol });
             featureLayer.setRenderer(renderer);
 
             map.addLayer(featureLayer);
