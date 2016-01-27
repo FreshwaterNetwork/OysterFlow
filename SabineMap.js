@@ -216,9 +216,7 @@
                 
             })
 
-            //$damSlider.slider.on("slidestart", function (event, ui) { alert("start"); });
-            //$damSlider.slider.on("slidestop", function (event, ui) { SabineMap.removeSelectedFeature(); });
-
+            
             $("#spanDamFlow").text(lstValidate.damFlow.med);
             $("#spanDamFlowMin").text(lstValidate.damFlow.min);
             $("#spanDamFlowMax").text(lstValidate.damFlow.max);

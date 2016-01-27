@@ -4,12 +4,7 @@
 	    name: "jquery",
 	    location: "//ajax.googleapis.com/ajax/libs/jquery/1.9.0",
 	    main: "jquery.min"
-	}/*,
-    {
-	    name: "orderBars",
-	    location: "./",
-	    main: "jquery.flot.orderBars.js"
-    }*/
+	}
     ]
 });
 
@@ -170,6 +165,15 @@ define([
                 }
                 else if (salinityState.isCalcasieu) {
                     salinityState.calcasieuWithdrawal = $("#txtInput").val();
+                    var selectedStationID = "rad1743";
+                    if ($("#rad0644").prop("checked"))
+                        selectedStationID = "rad0644";
+                    else if ($("#rad0685").prop("checked"))
+                        selectedStationID = "rad0685";
+                    else if ($("#rad0687").prop("checked"))
+                        selectedStationID = "rad0687";
+
+                    salinityState.selectedStationID = selectedStationID;
 
                     if ($("#divCalcasieuResults").css("display") == "none")
                         salinityState.results = false;

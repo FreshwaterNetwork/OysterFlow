@@ -9,7 +9,7 @@
 ], function ($,templates,SabineDialog,InitialMap,CalcasieuDialog,exports) {
    
 
-   /* return {*/
+   
 
             exports.setIntroDialog = function (container,map,app) {
                   $(container).html($.trim($(templates).find("#template-OysterIntro").html()));
@@ -26,6 +26,6 @@
                     InitialMap.setInitialCalcasieuMap(map);
                 });
             }
-        //}
+       
         
     })

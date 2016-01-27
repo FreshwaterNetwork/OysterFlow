@@ -200,54 +200,67 @@
                 </div>
                 </div>
             <div id="divCalcasieuResults" style="display:none">
-                <div style="text-align:center">
-                <div style="font-weight:bold;padding-top:10px;padding-bottom:10px">Probability Outside Optimum Salinity Range (<a id="aCalcThresholds" href="javascript:void(0)">view optimum ranges</a>)</div>
-                    <div id="divChartLegend" align = "center" style="border:none;margin:0px 0px 0px 0px"></div>
+                <div style="text-align:center" align = "center">
+               
+                    <!--<div id="divChartLegend" align = "center" style="border:none;margin:0px 0px 0px 0px"></div>-->
                     <div id="divChart" style="margin:0px 0px 0px 0px"></div>                   
-                    <div style="padding-top:10px;padding-bottom:10px"><span style="font-weight:bold">Amount of flow withdrawn:</span>&nbsp;<span id="spanWithdrawal"></span>&nbsp;cfs</div>
-                    <table id="legendTable" align="center" border = "1">
-                            <tr style="font-weight:bold;">
-                                <td style="padding:5px 5px 0px 5px">&nbsp;</td>
-                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Station #</td>
-                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Probability</td>
-                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Salinity</td>
-                                <td style="padding:5px 5px 0px 5px">&nbsp;</td>
-                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center" >Station #</td>
-                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center" >Probability</td>
-                                <td style="font-size:12px;padding:5px 5px 0px 5px;text-align:center">Salinity</td>
-                            </tr>
-                            <tr style="font-weight:bold;">
-                                <td style="padding:0px 5px 5px 5px">&nbsp;</td>
-                                <td style="font-size:12px;padding:0px 5px 5px 5px">&nbsp;</td>
-                                <td  id="tdMonth1" style="font-size:14px;padding:0px 5px 5px 5px;text-align:center;font-weight:bold"></td>
-                                <td style="font-size:12px;padding:0px 5px 5px 5px;text-align:center">Mean/StDev</td>
-                                <td style="padding:0px 5px 5px 5px">&nbsp;</td>
-                                <td style="font-size:12px;padding:0px 5px 5px 5px">&nbsp;</td>
-                                <td  id="tdMonth2" style="font-size:14px;padding:0px 5px 5px 5px;text-align:center;font-weight:bold"></td>
-                                <td style="font-size:12px;padding:0px 5px 5px 5px;text-align:center">Mean/StDev</td>
+                    <table style="margin:0px 0px 0px 0px;border:none;font-size:8px">
+                        <tr>
+                            <td width="50"><hr style="color:blue;background-color:blue;height:3px" /></td>
+                            <td style="font-size: 13px;vertical-align:middle" >Optimum Range</td>
+                            <td width="50"><hr style="color: black; background-color: black; height: 3px; " /></td>
+                            <td style="font-size: 13px; vertical-align: middle">Observed Data</td>
+                            <td width="50"><hr style="color: red; background-color: red; height: 3px; " /></td>
+                            <td style="font-size: 13px; vertical-align: middle">Scenario Prediction</td>
+                        </tr>
+                    </table>
+                    <div style="padding-bottom:10px"><span style="font-weight:bold">Amount of flow withdrawn:</span>&nbsp;<span id="spanWithdrawal"></span>&nbsp;cfs</div>
+                    <div align="center">
+                        <table id="legendTable" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="grpStations" id="rad1743" checked="checked" />
+                                </td>
+                                <td align="center">
+
+                                    <img src="plugins/sabine_app/images/ShinyPin_small.png">
+                                </td>
+
+                                <td id="td1743" style="font-weight:bold;">
+                                    CRMS 1743
+                                </td>
+                                <td width="25">
+                                    <input type="radio" name="grpStations" id="rad0644" />
+                                </td>
+                                <td>
+                                    <img src="plugins/sabine_app/images/PurpleShinyPin_small.png">
+                                </td>
+                                <td id="td0644">
+                                    CRMS 0644
+                                </td>
                             </tr>
                             <tr>
-                                <td id="td1743Image"></td>
-                                <td id="td1743Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
-                                <td id="td1743Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
-                                <td id="td1743Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center" ></td>
-                                <td id="td0644Image"></td>
-                                <td id="td0644Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
-                                <td id="td0644Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
-                                <td id="td0644Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
-                            </tr>
-                             <tr>
-                                <td id="td0685Image"></td>
-                                <td id="td0685Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
-                                <td id="td0685Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
-                                <td id="td0685Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
-                                <td id="td0687Image"></td>
-                                <td id="td0687Label" style="font-size:12px;padding:5px 5px 5px 5px"></td>
-                                <td id="td0687Value" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
-                                <td id="td0687Mean" style="font-size:12px;padding:5px 5px 5px 5px;text-align:center"></td>
+                                <td width="25">
+                                    <input type="radio" name="grpStations" id="rad0685" />
+                                </td>
+                                <td>
+                                    <img src="plugins/sabine_app/images/LightBlueShinyPin_small.png">
+                                </td>
+                                <td id="td0685">
+                                    CRMS 0685
+                                </td>
+                                <td width="25">
+                                    <input type="radio" name="grpStations" id="rad0687" />
+                                </td>
+                                <td>
+                                    <img src="plugins/sabine_app/images/BlueShinyPin_small.png">
+                                </td>
+                                <td id="td0687">
+                                    CRMS 0687
+                                </td>
                             </tr>
                         </table>
-
+                    </div>
                       <button id="btnStartOver" style="font-weight:bold">Start Over</button>
                 </div>
 

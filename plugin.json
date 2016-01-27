@@ -6,7 +6,7 @@
   ],
   "use": {
     "underscore": { "attach": "_" },
-    "orderBars": { "attach": "$" }
+    "errorBars": { "attach": "$" }
     
   }
 }
