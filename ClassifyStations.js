@@ -207,7 +207,7 @@
             var lstLayers = map.graphicsLayerIds;
             $.each(lstLayers, function (i, layerID) {
                 if (layerID.indexOf("SabineApp") >= 0)
-                    layerInfos.push({ "layer": map.getLayer(layerID), "title": "test" })
+                    layerInfos.push({ "layer": map.getLayer(layerID), "title": " " });
             });
 
             var appLegend = new Legend({

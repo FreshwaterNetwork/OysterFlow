@@ -6,6 +6,7 @@
     "esri/SpatialReference",
      "esri/layers/GraphicsLayer",
      "esri/symbols/PictureMarkerSymbol",
+     "esri/tasks/Geometry",
      "esri/geometry/Point",
      "esri/tasks/FeatureSet",
      "esri/layers/FeatureLayer",
@@ -15,7 +16,7 @@
        "dijit/TooltipDialog"
      
 
-], function ($, config,validators,SabineSelect,SpatialReference, GraphicsLayer, PictureMarkerSymbol, Point, FeatureSet,
+], function ($, config,validators,SabineSelect,SpatialReference, GraphicsLayer, PictureMarkerSymbol, Geometry, Point, FeatureSet,
     FeatureLayer, UniqueValueRenderer, Legend,Extent,TooltipDialog) {
 
     var configVals = dojo.eval(config)[0];
@@ -74,7 +75,7 @@
                     "drawingInfo": {
                         "renderer": {
                             "type": "uniqueValue",
-                            "field1":"DisplayName",                           
+                            "field1":"Name",                           
                             "uniqueValueInfos": [{
                                 "value": "Stations",
                                 "symbol":stationSymbol
@@ -155,14 +156,12 @@
             $(legendReference).append(placeholder);
 
             var layerInfos = [
-                { layer: map.getLayer("SabineApp_Reservoir"), title: "Reservoir" },
-                { layer: map.getLayer("SabineApp_NechesRiver"), title: "Neches River" },
-                { layer: map.getLayer("SabineApp_SabineRiver"), title: "Lower Sabine River" },
-                { layer: map.getLayer("SabineApp_ToledoDam"), title: "Toledo Dam" },
-                { layer: map.getLayer("SabineApp_Lake"), title: "Lake" },
-                { layer: map.getLayer("SabineApp_OysterReefs"), title: "Oyster Reefs" },
-                { layer: map.getLayer("SabineApp_Stations"), title: "Stations" }
-                
+                { layer: map.getLayer("SabineApp_Reservoir"), title: " " },
+                { layer: map.getLayer("SabineApp_NechesRiver"), title: " " },
+                { layer: map.getLayer("SabineApp_SabineRiver"), title: " " },
+                { layer: map.getLayer("SabineApp_ToledoDam"), title: " " },
+                { layer: map.getLayer("SabineApp_Lake"), title: " " },
+                { layer: map.getLayer("SabineApp_Stations"), title: " " }
             ];
 
             var appLegend = new Legend({
@@ -216,7 +215,9 @@
                 
             })
 
-            
+            //$damSlider.slider.on("slidestart", function (event, ui) { alert("start"); });
+            //$damSlider.slider.on("slidestop", function (event, ui) { SabineMap.removeSelectedFeature(); });
+
             $("#spanDamFlow").text(lstValidate.damFlow.med);
             $("#spanDamFlowMin").text(lstValidate.damFlow.min);
             $("#spanDamFlowMax").text(lstValidate.damFlow.max);
