@@ -6,7 +6,6 @@
     "esri/SpatialReference",
      "esri/layers/GraphicsLayer",
      "esri/symbols/PictureMarkerSymbol",
-     "esri/tasks/Geometry",
      "esri/geometry/Point",
      "esri/tasks/FeatureSet",
      "esri/layers/FeatureLayer",
@@ -16,7 +15,7 @@
        "dijit/TooltipDialog"
      
 
-], function ($, config,validators,SabineSelect,SpatialReference, GraphicsLayer, PictureMarkerSymbol, Geometry, Point, FeatureSet,
+], function ($, config,validators,SabineSelect,SpatialReference, GraphicsLayer, PictureMarkerSymbol, Point, FeatureSet,
     FeatureLayer, UniqueValueRenderer, Legend,Extent,TooltipDialog) {
 
     var configVals = dojo.eval(config)[0];
