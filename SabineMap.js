@@ -73,12 +73,9 @@
                     "objectIdField": "ObjectID",
                     "drawingInfo": {
                         "renderer": {
-                            "type": "uniqueValue",
-                            "field1":"Name",                           
-                            "uniqueValueInfos": [{
-                                "value": "Stations",
-                                "symbol":stationSymbol
-                            }]
+                            "type": "simple",
+                            "symbol": stationSymbol,
+                            "label": "Stations"
                         }
                     },
                     "fields": [
