@@ -31,7 +31,7 @@
             if (stationsLayer)
                 map.removeLayer(stationsLayer);
 
-            var stationSymbol = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/sabine_app/images/BlueSphere.png", "contentType": "image/png", "width": 32, "height": 32 });
+            var stationSymbol = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/OysterFlow/images/BlueSphere.png", "contentType": "image/png", "width": 32, "height": 32 });
 
             var jsonFS = {
                 "displayFieldName": "Station",

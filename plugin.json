@@ -1,12 +1,10 @@
 {
   "css": [
-    "plugins/sabine_app/css/jquery-ui.min.css",
-    "plugins/sabine_app/css/jquery-ui.structure.min.css",
-    "plugins/sabine_app/css/jquery-ui.theme.min.css"
+    "plugins/OysterFlow/css/jquery-ui.min.css",
+    "plugins/OysterFlow/css/jquery-ui.structure.min.css",
+    "plugins/OysterFlow/css/jquery-ui.theme.min.css"
   ],
   "use": {
-    "underscore": { "attach": "_" },
     "errorBars": { "attach": "$" }
-    
   }
 }

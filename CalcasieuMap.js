@@ -34,7 +34,7 @@
             if (stationsLayer)
                 map.removeLayer(stationsLayer);
 
-            //var stationSymbol = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/sabine_app/images/BlueSphere.png", "contentType": "image/png", "width": 32, "height": 32 });
+            //var stationSymbol = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/OysterFlow/images/BlueSphere.png", "contentType": "image/png", "width": 32, "height": 32 });
             var stationSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE,10,new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
 
 
@@ -114,10 +114,10 @@
             var symbol0685 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([153, 153, 153]), 1), new Color([153, 153, 153]));
             var symbol0687 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([51, 153, 153]), 1), new Color([51, 153, 153, 1.0]));*/
 
-            var symbol1743 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/sabine_app/images/ShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
-            var symbol0644 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/sabine_app/images/PurpleShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
-            var symbol0685 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/sabine_app/images/LightBlueShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
-            var symbol0687 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/sabine_app/images/BlueShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
+            var symbol1743 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/OysterFlow/images/ShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
+            var symbol0644 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/OysterFlow/images/PurpleShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
+            var symbol0685 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/OysterFlow/images/LightBlueShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
+            var symbol0687 = new PictureMarkerSymbol({ "angle": 0, "xoffset": 0, "yoffset": 0, "type": "esriPMS", "url": "plugins/OysterFlow/images/BlueShinyPin.png", "contentType": "image/png", "width": 32, "height": 32 });
 
             renderer.addValue({ value: "CRMS1743", label: "CRMS1743", symbol: symbol1743 });
             renderer.addValue({ value: "CRMS0644", label: "CRMS0644", symbol: symbol0644 });

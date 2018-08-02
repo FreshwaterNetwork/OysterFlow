@@ -39,9 +39,9 @@
             var table = $("#tbodyResults");
             $(table).html(null); //remove existing rows
 
-            var greenIcon = "plugins/sabine_app/images/GreenSphere.png";
-            var redIcon = "plugins/sabine_app/images/RedSphere.png";
-            var yellowIcon = "plugins/sabine_app/images/YellowSphere.png"
+            var greenIcon = "plugins/OysterFlow/images/GreenSphere.png";
+            var redIcon = "plugins/OysterFlow/images/RedSphere.png";
+            var yellowIcon = "plugins/OysterFlow/images/YellowSphere.png"
 
             //remove the existing stations layer
             var stationsLayer = map.getLayer("SabineApp_Stations");
